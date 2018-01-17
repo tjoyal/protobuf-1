@@ -143,7 +143,7 @@ module Protobuf
         debug_say('Configuring traps')
 
         exit_signals = [:INT, :TERM]
-        exit_signals << :QUIT unless defined?(JRUBY_VERSION)
+        exit_signals << :QUIT unless defined?(JRUBY_VERSION) || RUBY_ENGINE == "truffleruby"
 
         exit_signals.each do |signal|
           debug_say("Registering trap for exit signal #{signal}", :blue)
